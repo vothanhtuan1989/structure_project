@@ -76,3 +76,6 @@ gem "devise", "~> 4.9.2"
 
 # See https://github.com/collectiveidea/audited
 gem "audited", "~> 5.0"
+
+# Rails Engines
+gem 'product', path: 'vendor/gems/product'

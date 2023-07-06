@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_05_133242) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_05_141621) do
+  create_table "product_product_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "tag"
+    t.integer "parent_id"
+    t.boolean "active", default: true
+    t.integer "priority", default: 999
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_products", force: :cascade do |t|
+    t.string "name"
+    t.string "product_code"
+    t.integer "product_type"
+    t.string "material"
+    t.integer "unit"
+    t.integer "length"
+    t.integer "width"
+    t.integer "height"
+    t.integer "buy_price"
+    t.integer "sell_price"
+    t.text "decription"
+    t.integer "available_number"
+    t.integer "minimum_number"
+    t.integer "sell_number"
+    t.boolean "active", default: true
+    t.integer "priority", default: 999
+    t.string "photo"
+    t.integer "product_category_id"
+    t.integer "warehouse_position_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
