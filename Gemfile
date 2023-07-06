@@ -18,10 +18,10 @@ gem "puma", "~> 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+# Hotwire"s SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+# Hotwire"s modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -78,4 +78,25 @@ gem "devise", "~> 4.9.2"
 gem "audited", "~> 5.0"
 
 # Rails Engines
-gem 'product', path: 'vendor/gems/product'
+gem "product", path: "vendor/gems/product"
+
+# See https://github.com/nebulab/simple_command
+gem "simple_command"
+
+# See https://github.com/varvet/pundit
+gem "pundit"
+
+gem 'sidekiq', '~> 7.0', '>= 7.0.1'
+gem 'sidekiq-unique-jobs'
+
+group :development, :test do
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  gem 'rspec-rails', '~> 6.0.0'
+  gem "factory_bot_rails"
+  gem "faker"
+
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end

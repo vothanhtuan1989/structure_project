@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_05_141621) do
     t.integer "buy_price"
     t.integer "sell_price"
     t.text "decription"
-    t.integer "available_number"
+    t.integer "available_number", default: 0
     t.integer "minimum_number"
     t.integer "sell_number"
     t.boolean "active", default: true
