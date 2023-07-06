@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_05_141621) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_06_100220) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "audits", force: :cascade do |t|
+    t.integer "auditable_id"
+    t.string "auditable_type"
+    t.integer "associated_id"
+    t.string "associated_type"
+    t.integer "user_id"
+    t.string "user_type"
+    t.string "username"
+    t.string "action"
+    t.jsonb "audited_changes"
+    t.integer "version", default: 0
+    t.string "comment"
+    t.string "remote_address"
+    t.string "request_uuid"
+    t.datetime "created_at"
+    t.index ["associated_type", "associated_id"], name: "associated_index"
+    t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
+    t.index ["created_at"], name: "index_audits_on_created_at"
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid"
+    t.index ["user_id", "user_type"], name: "user_index"
+  end
+
   create_table "product_product_categories", force: :cascade do |t|
     t.string "name"
     t.string "tag"
     t.integer "parent_id"
-    t.boolean "active", default: true
-    t.integer "priority", default: 999
+    t.boolean "active"
+    t.integer "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,11 +58,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_05_141621) do
     t.integer "buy_price"
     t.integer "sell_price"
     t.text "decription"
-    t.integer "available_number", default: 0
+    t.integer "available_number"
     t.integer "minimum_number"
     t.integer "sell_number"
-    t.boolean "active", default: true
-    t.integer "priority", default: 999
+    t.boolean "active"
+    t.integer "priority"
     t.string "photo"
     t.integer "product_category_id"
     t.integer "warehouse_position_id"
